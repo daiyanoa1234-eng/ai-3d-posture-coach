@@ -67,7 +67,7 @@ Production版にはService Workerを生成します。画面は初回訪問時�
 
 **NF-05（アセット合計15MB以下）は非圧縮サイズで未達です。** 公式配布物 `tasks-vision@1.1.0` のWASM約13MB＋lite約5.78MBまたはfull約9.40MB＋JS/CSS約0.71MBが初回カメラ起動に必要です。WASMはSIMD／非SIMD／moduleの各配布物を配置しますが、実行環境が選択したものだけを読み込みます。両モデルの事前一括ダウンロードはしません。実転送量はホストの圧縮に依存するため別途確認が必要です。小容量が必須の場合はlite固定や別の推定ライブラリを再検証してください。
 
-ファイル別の容量と端末が選択するファイルの合計は [ASSET-SIZES.md](ASSET-SIZES.md) / `ASSET-SIZES.json` に記録。`npm run build && npm run report:assets`で更新できます。非圧縮合計と実際の通信転送量は別の値です。`?bench=1` のdownload項目でこの端末の観測値を確認できます。
+ファイル別の容量と端末が選択するファイルの合計は [ASSET-SIZES.md](ASSET-SIZES.md) / `ASSET-SIZES.json` に記録。`npm run build && npm run report:assets`で更新できます。公開サーバーのGET応答本文サイズは [PAGES-TRANSFER.md](PAGES-TRANSFER.md) / `PAGES-TRANSFER.json` に記録（`python3 scripts/measure-pages.py`で再測定）。SIMD対応時の初回選択ファイル合計は、公開サーバーのgzip応答でlite 9.130MB、full 12.529MBでした。iPhone/Androidの実機セッション転送量ではありません。非圧縮合計と実際の通信転送量は別の値です。`?bench=1` のdownload項目でこの端末の観測値を確認できます。
 
 モデルのSHA-256をビルド時に固定値と照合します。モデルの取得元・サイズ・SHA-256は `public/models/manifest.json`、固定されたバージョンは `package-lock.json` を参照してください。ビルドスクリプトは既存モデルを再利用します。
 

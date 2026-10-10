@@ -49,3 +49,5 @@ Phase 0の実機速度ゲートとPhase 1の角度精度ゲートは未通過。
 ## 公開状態
 
 2026-10-11に公開先 daiyanoa1234-eng/ai-3d-posture-coach（public）とPages配信をユーザー承認済み。公開前に全到達可能コミットを確認し作者情報を匿名化、認証情報・私的な個人情報・人物画像/動画なし。監査結果はPUBLICATION-AUDIT.json、容量はASSET-SIZES.md。
+
+公開確認: GitHub Actions run 38064619999 成功。Pagesの画面と全16配信ファイルHTTP 200、公開ページのコンソールerror/warnなし（初期表示のみ）。iPhone実機の計測はユーザーが実施。サーバー応答の容量実測はPAGES-TRANSFER.mdを参照。

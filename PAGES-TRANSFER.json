@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-11",
+  "origin": "https://daiyanoa1234-eng.github.io/ai-3d-posture-coach/",
+  "requestAcceptEncoding": "gzip",
+  "method": "GET each hosted asset with curl, no browser cache",
+  "files": [
+    {
+      "file": "assets/index-C8K5n1jO.js",
+      "status": 200,
+      "encodedResponseBodyBytes": 188367,
+      "responseHeaderBytes": 762,
+      "contentEncoding": "gzip",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "file": "assets/index-DqOJSIuA.css",
+      "status": 200,
+      "encodedResponseBodyBytes": 3216,
+      "responseHeaderBytes": 724,
+      "contentEncoding": "gzip",
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "file": "index.html",
+      "status": 200,
+      "encodedResponseBodyBytes": 568,
+      "responseHeaderBytes": 723,
+      "contentEncoding": "gzip",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "file": "licenses/Apache-2.0.txt",
+      "status": 200,
+      "encodedResponseBodyBytes": 3329,
+      "responseHeaderBytes": 726,
+      "contentEncoding": "gzip",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "file": "licenses/NOTICE.txt",
+      "status": 200,
+      "encodedResponseBodyBytes": 463,
+      "responseHeaderBytes": 724,
+      "contentEncoding": "gzip",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "file": "licenses/three-MIT.txt",
+      "status": 200,
+      "encodedResponseBodyBytes": 662,
+      "responseHeaderBytes": 722,
+      "contentEncoding": "gzip",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_internal.js",
+      "status": 200,
+      "encodedResponseBodyBytes": 82610,
+      "responseHeaderBytes": 740,
+      "contentEncoding": "gzip",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_internal.wasm",
+      "status": 200,
+      "encodedResponseBodyBytes": 3892877,
+      "responseHeaderBytes": 742,
+      "contentEncoding": "gzip",
+      "contentType": "application/wasm"
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_module_internal.js",
+      "status": 200,
+      "encodedResponseBodyBytes": 82557,
+      "responseHeaderBytes": 739,
+      "contentEncoding": "gzip",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_module_internal.wasm",
+      "status": 200,
+      "encodedResponseBodyBytes": 3892884,
+      "responseHeaderBytes": 720,
+      "contentEncoding": "gzip",
+      "contentType": "application/wasm"
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_nosimd_internal.js",
+      "status": 200,
+      "encodedResponseBodyBytes": 82545,
+      "responseHeaderBytes": 759,
+      "contentEncoding": "gzip",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_nosimd_internal.wasm",
+      "status": 200,
+      "encodedResponseBodyBytes": 3775369,
+      "responseHeaderBytes": 743,
+      "contentEncoding": "gzip",
+      "contentType": "application/wasm"
+    },
+    {
+      "file": "models/manifest.json",
+      "status": 200,
+      "encodedResponseBodyBytes": 220,
+      "responseHeaderBytes": 728,
+      "contentEncoding": "gzip",
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "file": "models/pose_landmarker_full.task",
+      "status": 200,
+      "encodedResponseBodyBytes": 8356721,
+      "responseHeaderBytes": 751,
+      "contentEncoding": "gzip",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "file": "models/pose_landmarker_lite.task",
+      "status": 200,
+      "encodedResponseBodyBytes": 4957076,
+      "responseHeaderBytes": 751,
+      "contentEncoding": "gzip",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "file": "sw.js",
+      "status": 200,
+      "encodedResponseBodyBytes": 519,
+      "responseHeaderBytes": 755,
+      "contentEncoding": "gzip",
+      "contentType": "application/javascript; charset=utf-8"
+    }
+  ],
+  "selectedFileTotals": [
+    {
+      "variant": "internal",
+      "model": "lite",
+      "encodedResponseBodyBytes": 9129687,
+      "responseHeaderBytes": 7369
+    },
+    {
+      "variant": "internal",
+      "model": "full",
+      "encodedResponseBodyBytes": 12529332,
+      "responseHeaderBytes": 7369
+    },
+    {
+      "variant": "nosimd_internal",
+      "model": "lite",
+      "encodedResponseBodyBytes": 9012114,
+      "responseHeaderBytes": 7389
+    },
+    {
+      "variant": "nosimd_internal",
+      "model": "full",
+      "encodedResponseBodyBytes": 12411759,
+      "responseHeaderBytes": 7389
+    },
+    {
+      "variant": "module_internal",
+      "model": "lite",
+      "encodedResponseBodyBytes": 9129641,
+      "responseHeaderBytes": 7346
+    },
+    {
+      "variant": "module_internal",
+      "model": "full",
+      "encodedResponseBodyBytes": 12529286,
+      "responseHeaderBytes": 7346
+    }
+  ],
+  "limitations": "Measured Pages HTTP response bodies, not a physical iPhone/Android session. Browser compression, HTTP/SW cache, duplicate fetches, TLS overhead and SW update checks affect actual wire usage. Use bench download output and browser Network for physical-device totals."
+}

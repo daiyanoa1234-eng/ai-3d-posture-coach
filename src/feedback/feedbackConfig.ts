@@ -2,7 +2,7 @@ import type { Mode, Level } from "../types";
 export const colors: Record<Level, string> = {
   neutral: "#5b6478",
   green: "#2ee6a6",
-  orange: "#ff9f43",
+  orange: "#ffd23f",
   red: "#ff4d6d",
 };
 export const thresholds: Record<
@@ -50,4 +50,13 @@ export const labels: Record<Level, string> = {
   green: "○ 基準に近い",
   orange: "△ 前傾が大きい",
   red: "！前傾がかなり大きい",
+};
+
+// Educational cues explicitly approved in requirements; these do not estimate lumbar load.
+export const warnings = {
+  orange: { icon: "△", text: "腰に負担がかかりやすい姿勢です" },
+  red: {
+    icon: "！",
+    text: "腰に負担がかかりやすい姿勢が続いています。膝を曲げて体を起こしましょう",
+  },
 };

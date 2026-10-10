@@ -1,4 +1,5 @@
 import { currentDownloadReport } from "../analysis/downloads";
+import { prepareOffline } from "../offline/prepareOffline";
 import { Camera, cameraError } from "../camera/Camera";
 import { PoseEstimator } from "../pose/PoseEstimator";
 import { LandmarkFilter } from "../filter/OneEuroFilter";
@@ -6,7 +7,7 @@ import { ConfidenceGate } from "../analysis/confidence";
 import { calculateAngles } from "../analysis/angles";
 import { Calibrator } from "../analysis/calibration";
 import { FeedbackEngine } from "../feedback/FeedbackEngine";
-import { colors, labels } from "../feedback/feedbackConfig";
+import { colors, labels, warnings } from "../feedback/feedbackConfig";
 import { Scene3D } from "../scene/Scene3D";
 import { Overlay } from "../ui/Overlay";
 import { element, setText } from "../ui/Hud";
@@ -82,6 +83,7 @@ export class App {
   private level: Level = "neutral";
   private token = 0;
   private autoResume = false;
+  private offlineReady: Promise<void>;
   private calibrationMessage = "";
   private calibrationUntil = 0;
   constructor() {
@@ -90,7 +92,17 @@ export class App {
     element("debug-panel").hidden = !(this.debug || this.bench);
     if (this.bench) element<HTMLDetailsElement>("debug-panel").open = true;
     this.render(performance.now());
-    void this.prepareOffline();
+    this.offlineReady = prepareOffline(
+      this.pose.model,
+      (text) => setText("offline", text),
+      () => this.stop(),
+    );
+    void this.updateDevices().catch(() => {
+      /* Permission is not acquired here. */
+    });
+    navigator.mediaDevices?.addEventListener("devicechange", () => {
+      void this.updateDevices().catch(() => {});
+    });
   }
   private bind() {
     element("start").onclick = () =>
@@ -125,13 +137,16 @@ export class App {
       this.camera.facing =
         this.camera.facing === "user" ? "environment" : "user";
       this.camera.deviceId = "";
-      this.mirror = this.camera.facing === "user";
+      this.mirror = isMobile && this.camera.facing === "user";
       element<HTMLInputElement>("mirror").checked = this.mirror;
       this.applyMirror();
       void this.restartCamera();
     };
     element<HTMLSelectElement>("devices").onchange = (e) => {
       this.camera.deviceId = (e.target as HTMLSelectElement).value;
+      this.mirror = false;
+      element<HTMLInputElement>("mirror").checked = false;
+      this.applyMirror();
       void this.restartCamera();
     };
     element<HTMLInputElement>("mirror").onchange = (e) => {
@@ -165,6 +180,7 @@ export class App {
         (b.onclick = () => {
           this.mode = b.dataset.mode as Mode;
           this.feedback.reset();
+          this.showWarning("neutral");
           this.calibrationMessage = "";
           document
             .querySelectorAll("[data-mode]")
@@ -222,6 +238,7 @@ export class App {
     element("capture").classList.toggle("mirrored", this.mirror);
   }
   private resetTracking() {
+    this.showWarning("neutral");
     this.filter2.reset();
     this.filter3.reset();
     this.gate.reset();
@@ -252,6 +269,9 @@ export class App {
         this.setControls();
         return;
       }
+      await this.updateDevices();
+      await this.offlineReady;
+      if (token !== this.token) return;
       await this.pose.init();
       if (document.hidden && token === this.token) {
         this.camera.stop();
@@ -269,7 +289,6 @@ export class App {
       this.beginBenchmark();
       this.setControls();
       this.scheduleInference();
-      void this.cacheInferenceAssets();
     } catch (error) {
       if (token === this.token) this.fail(error);
     }
@@ -548,6 +567,9 @@ export class App {
     if (!this.calibrator.active && raw.timestampMs > this.calibrationUntil)
       this.calibrationMessage = "";
     setText("hint", this.calibrationMessage || fb.message);
+    this.showWarning(
+      this.calibrator.active || this.calibrationMessage ? "neutral" : fb.level,
+    );
     if (fb.level !== this.level) {
       if (
         this.voice &&
@@ -568,7 +590,19 @@ export class App {
       this.level = fb.level;
     }
   }
+  private showWarning(level: Level) {
+    const warning =
+      level === "orange" || level === "red" ? warnings[level] : null;
+    for (const id of ["model-warning", "bottom-warning"])
+      element(id).classList.toggle("is-visible", !!warning);
+    if (warning) {
+      setText("model-warning", warning.icon);
+      setText("warning-icon", warning.icon);
+      setText("warning-text", warning.text);
+    }
+  }
   private clearMetrics() {
+    this.showWarning("neutral");
     for (const id of ["trunk", "hip", "knee"]) setText(id, "—");
     setText("feedback-symbol", "◈");
     this.level = "neutral";
@@ -750,55 +784,6 @@ export class App {
         "bench-note",
         "コピーできません。表示中の計測結果を選択してコピーしてください。",
       );
-    }
-  }
-  private async prepareOffline() {
-    if (!("serviceWorker" in navigator) || import.meta.env.DEV) return;
-    try {
-      await navigator.serviceWorker.register(
-        `${import.meta.env.BASE_URL}sw.js`,
-        { scope: import.meta.env.BASE_URL },
-      );
-      await navigator.serviceWorker.ready;
-      setText("offline", "画面をキャッシュ済 · カメラ起動で解析モデルを準備");
-    } catch {
-      setText("offline", "オフライン準備に失敗 · 接続中は利用可能");
-    }
-  }
-  private async cacheInferenceAssets() {
-    if (!("caches" in window) || import.meta.env.DEV) return;
-    try {
-      await navigator.serviceWorker.ready;
-      const names = await caches.keys(),
-        name = names.find((n) => n.startsWith("posture-"));
-      if (!name) return;
-      const cache = await caches.open(name);
-      const urls = new Set(
-        performance
-          .getEntriesByType("resource")
-          .map((e) => e.name)
-          .filter(
-            (url) =>
-              url.startsWith(location.origin) &&
-              (/\/mediapipe\/wasm\//.test(url) ||
-                /\/models\/.*\.task/.test(url)),
-          ),
-      );
-      urls.add(
-        new URL(
-          `${import.meta.env.BASE_URL}models/pose_landmarker_${this.pose.model}.task`,
-          location.origin,
-        ).href,
-      );
-      if (![...urls].some((url) => url.endsWith(".wasm"))) {
-        setText("offline", "WASMのキャッシュ未確認 · オフライン動作は未準備");
-        return;
-      }
-      for (const url of urls)
-        if (!(await cache.match(url))) await cache.add(url);
-      setText("offline", `オフライン準備完了 · ${this.pose.model}モデル`);
-    } catch {
-      setText("offline", "解析モデルのキャッシュ未完了 · 接続して再試行");
     }
   }
 }

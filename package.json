@@ -7,7 +7,7 @@
     "dev": "vite --host 127.0.0.1",
     "assets": "node scripts/prepare-assets.mjs",
     "build": "npm run assets && tsc --noEmit && vite build && node scripts/prepare-sw.mjs",
-    "test": "vitest run",
+    "test": "vitest run && node --test scripts/test-sw.mjs",
     "lint": "eslint src tests",
     "preview": "vite preview --host 127.0.0.1",
     "audit:publication": "node scripts/audit-publication.mjs",

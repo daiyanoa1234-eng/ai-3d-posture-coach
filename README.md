@@ -63,9 +63,12 @@ CSPで静的アセットを同一オリジンに限定。外部フォント・CD
 
 ## オフラインと容量
 
-Production版にはService Workerを生成します。画面は初回訪問時、使用したモデル・WASMはカメラ起動時にキャッシュします。「オフライン準備完了」を確認してから機内モードにしてください。lite/fullを切替える場合は各モデルで一度オンライン起動が必要です。dev版にはService Workerを登録しません。更新はタブをすべて閉じてから再度開くと反映されます。ブラウザによるキャッシュ削除・容量制限により再読み込みが必要になる場合があります。
+Production版は初回訪問時にアプリ本体と端末に対応するWASM・モデルをService Workerへ準備します。カメラ許可は不要です。「オフライン準備完了」を確認してから機内モードへ切り替え、同じURLを開いてください。モデル切替時はオンラインで対象モデルの準備が必要です。新しいバージョンは既存の推論アセットを再取得してから切り替え、古いキャッシュを削除し画面を自動再読込します（カメラは停止します）。更新失敗時は既存版を保持します。dev版は対象外。ブラウザによるサイトデータ削除・容量制限後はオンラインで再準備してください。
 
-**NF-05（アセット合計15MB以下）は非圧縮サイズで未達です。** 公式配布物 `tasks-vision@1.1.0` のWASM約13MB＋lite約5.78MBまたはfull約9.40MB＋JS/CSS約0.71MBが初回カメラ起動に必要です。WASMはSIMD／非SIMD／moduleの各配布物を配置しますが、実行環境が選択したものだけを読み込みます。両モデルの事前一括ダウンロードはしません。実転送量はホストの圧縮に依存するため別途確認が必要です。小容量が必須の場合はlite固定や別の推定ライブラリを再検証してください。
+**NF-05「初回の転送量（gzip）15MB以下」は合格。** ファイル別・端末プリセット別は[ASSET-SIZES.md](ASSET-SIZES.md)、Pages応答実測は[PAGES-TRANSFER.md](PAGES-TRANSFER.md)を参照。通常はモバイルlite、PC full、WASMはSIMD/非SIMDのうち1組を準備します。
+
+PCカメラは一覧から選択し、Macの連係カメラなど外部入力は非鏡像が既定です。選択はタブのsessionStorageに保持します。カメラ許可前は仮ラベル、許可後に実ラベルを再取得します。鏡表示は手動変更できます。黄・赤の警告は教育用の定型案内であり、腰への負荷は計測しません。
+
 
 ファイル別の容量と端末が選択するファイルの合計は [ASSET-SIZES.md](ASSET-SIZES.md) / `ASSET-SIZES.json` に記録。`npm run build && npm run report:assets`で更新できます。公開サーバーのGET応答本文サイズは [PAGES-TRANSFER.md](PAGES-TRANSFER.md) / `PAGES-TRANSFER.json` に記録（`python3 scripts/measure-pages.py`で再測定）。SIMD対応時の初回選択ファイル合計は、公開サーバーのgzip応答でlite 9.130MB、full 12.529MBでした。iPhone/Androidの実機セッション転送量ではありません。非圧縮合計と実際の通信転送量は別の値です。`?bench=1` のdownload項目でこの端末の観測値を確認できます。
 
@@ -89,3 +92,5 @@ Production版にはService Workerを生成します。画面は初回訪問時�
 - [Three.js Quaternion documentation](https://threejs.org/docs/pages/Quaternion.html)
 
 付属のREQUIREMENTS.mdが元の要件定義書です。この実装をMVP完了と判定する前に、ACCEPTANCE.mdの実機項目を確認してください。
+
+要件の正本: [docs/requirements.md](docs/requirements.md)。

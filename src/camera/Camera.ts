@@ -3,7 +3,13 @@ export class Camera {
   private generation = 0;
   facing: "user" | "environment" = "environment";
   deviceId = "";
+  private readonly storageKey = "posture-camera-device";
   constructor(readonly video: HTMLVideoElement) {
+    try {
+      this.deviceId = sessionStorage.getItem(this.storageKey) ?? "";
+    } catch {
+      /* Storage may be disabled. */
+    }
     video.muted = true;
     video.playsInline = true;
   }
@@ -15,7 +21,7 @@ export class Camera {
         "HTTPSまたはlocalhostで開いてください。カメラ対応ブラウザが必要です。",
       );
     this.deviceId = deviceId;
-    const stream = await navigator.mediaDevices.getUserMedia({
+    const constraints: MediaStreamConstraints = {
       audio: false,
       video: {
         ...(deviceId
@@ -25,12 +31,40 @@ export class Camera {
         height: { ideal: 480 },
         frameRate: { ideal: 30, max: 30 },
       },
-    });
+    };
+    let stream: MediaStream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia(constraints);
+    } catch (error) {
+      if (generation !== this.generation) throw error;
+      if (
+        !deviceId ||
+        !(error instanceof DOMException) ||
+        !["NotFoundError", "OverconstrainedError"].includes(error.name)
+      )
+        throw error;
+      this.deviceId = "";
+      stream = await navigator.mediaDevices.getUserMedia({
+        ...constraints,
+        video: {
+          facingMode: { ideal: this.facing },
+          width: { ideal: 640 },
+          height: { ideal: 480 },
+        },
+      });
+    }
     if (generation !== this.generation) {
       stream.getTracks().forEach((t) => t.stop());
       throw new DOMException("カメラ起動を中止しました", "AbortError");
     }
     this.stream = stream;
+    this.deviceId =
+      stream.getVideoTracks()[0]?.getSettings().deviceId ?? this.deviceId;
+    try {
+      sessionStorage.setItem(this.storageKey, this.deviceId);
+    } catch {
+      /* Memory-only selection. */
+    }
     this.video.srcObject = stream;
     try {
       await this.video.play();

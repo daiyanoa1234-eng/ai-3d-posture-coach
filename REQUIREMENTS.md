@@ -642,7 +642,7 @@ export class HysteresisState {
 | LOST/PARTIAL | 該当部位 | グレー（#5b6478） |
 
 色（emissive、約200msでトランジション）：
-- green `#2ee6a6` / orange `#ff9f43` / red `#ff4d6d` / neutral `#5b6478`
+- green `#2ee6a6` / orange（黄表示） `#ffd23f` / red `#ff4d6d` / neutral `#5b6478`
 - 赤・緑の区別が難しい人向けに、色だけでなくラベル文言・アイコン形状（○ △ ！）も併記
 
 ### 10.5 メッセージ・角度ラベル

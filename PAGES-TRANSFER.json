@@ -5,25 +5,25 @@
   "method": "GET each hosted asset with curl, no browser cache",
   "files": [
     {
-      "file": "assets/index-C8K5n1jO.js",
+      "file": "assets/index-D0Qsqf8-.css",
       "status": 200,
-      "encodedResponseBodyBytes": 188367,
-      "responseHeaderBytes": 762,
-      "contentEncoding": "gzip",
-      "contentType": "application/javascript; charset=utf-8"
-    },
-    {
-      "file": "assets/index-DqOJSIuA.css",
-      "status": 200,
-      "encodedResponseBodyBytes": 3216,
-      "responseHeaderBytes": 724,
+      "encodedResponseBodyBytes": 3382,
+      "responseHeaderBytes": 745,
       "contentEncoding": "gzip",
       "contentType": "text/css; charset=utf-8"
     },
     {
+      "file": "assets/index-DgaPHLBp.js",
+      "status": 200,
+      "encodedResponseBodyBytes": 188953,
+      "responseHeaderBytes": 741,
+      "contentEncoding": "gzip",
+      "contentType": "application/javascript; charset=utf-8"
+    },
+    {
       "file": "index.html",
       "status": 200,
-      "encodedResponseBodyBytes": 568,
+      "encodedResponseBodyBytes": 565,
       "responseHeaderBytes": 723,
       "contentEncoding": "gzip",
       "contentType": "text/html; charset=utf-8"
@@ -48,7 +48,7 @@
       "file": "licenses/three-MIT.txt",
       "status": 200,
       "encodedResponseBodyBytes": 662,
-      "responseHeaderBytes": 722,
+      "responseHeaderBytes": 724,
       "contentEncoding": "gzip",
       "contentType": "text/plain; charset=utf-8"
     },
@@ -56,7 +56,7 @@
       "file": "mediapipe/wasm/vision_wasm_internal.js",
       "status": 200,
       "encodedResponseBodyBytes": 82610,
-      "responseHeaderBytes": 740,
+      "responseHeaderBytes": 759,
       "contentEncoding": "gzip",
       "contentType": "application/javascript; charset=utf-8"
     },
@@ -64,7 +64,7 @@
       "file": "mediapipe/wasm/vision_wasm_internal.wasm",
       "status": 200,
       "encodedResponseBodyBytes": 3892877,
-      "responseHeaderBytes": 742,
+      "responseHeaderBytes": 743,
       "contentEncoding": "gzip",
       "contentType": "application/wasm"
     },
@@ -72,7 +72,7 @@
       "file": "mediapipe/wasm/vision_wasm_module_internal.js",
       "status": 200,
       "encodedResponseBodyBytes": 82557,
-      "responseHeaderBytes": 739,
+      "responseHeaderBytes": 740,
       "contentEncoding": "gzip",
       "contentType": "application/javascript; charset=utf-8"
     },
@@ -80,7 +80,7 @@
       "file": "mediapipe/wasm/vision_wasm_module_internal.wasm",
       "status": 200,
       "encodedResponseBodyBytes": 3892884,
-      "responseHeaderBytes": 720,
+      "responseHeaderBytes": 722,
       "contentEncoding": "gzip",
       "contentType": "application/wasm"
     },
@@ -88,7 +88,7 @@
       "file": "mediapipe/wasm/vision_wasm_nosimd_internal.js",
       "status": 200,
       "encodedResponseBodyBytes": 82545,
-      "responseHeaderBytes": 759,
+      "responseHeaderBytes": 740,
       "contentEncoding": "gzip",
       "contentType": "application/javascript; charset=utf-8"
     },
@@ -104,7 +104,7 @@
       "file": "models/manifest.json",
       "status": 200,
       "encodedResponseBodyBytes": 220,
-      "responseHeaderBytes": 728,
+      "responseHeaderBytes": 749,
       "contentEncoding": "gzip",
       "contentType": "application/json; charset=utf-8"
     },
@@ -127,8 +127,8 @@
     {
       "file": "sw.js",
       "status": 200,
-      "encodedResponseBodyBytes": 519,
-      "responseHeaderBytes": 755,
+      "encodedResponseBodyBytes": 1067,
+      "responseHeaderBytes": 737,
       "contentEncoding": "gzip",
       "contentType": "application/javascript; charset=utf-8"
     }
@@ -137,38 +137,38 @@
     {
       "variant": "internal",
       "model": "lite",
-      "encodedResponseBodyBytes": 9129687,
-      "responseHeaderBytes": 7369
+      "encodedResponseBodyBytes": 9130984,
+      "responseHeaderBytes": 7373
     },
     {
       "variant": "internal",
       "model": "full",
-      "encodedResponseBodyBytes": 12529332,
-      "responseHeaderBytes": 7369
+      "encodedResponseBodyBytes": 12530629,
+      "responseHeaderBytes": 7373
     },
     {
       "variant": "nosimd_internal",
       "model": "lite",
-      "encodedResponseBodyBytes": 9012114,
-      "responseHeaderBytes": 7389
+      "encodedResponseBodyBytes": 9013411,
+      "responseHeaderBytes": 7354
     },
     {
       "variant": "nosimd_internal",
       "model": "full",
-      "encodedResponseBodyBytes": 12411759,
-      "responseHeaderBytes": 7389
+      "encodedResponseBodyBytes": 12413056,
+      "responseHeaderBytes": 7354
     },
     {
       "variant": "module_internal",
       "model": "lite",
-      "encodedResponseBodyBytes": 9129641,
-      "responseHeaderBytes": 7346
+      "encodedResponseBodyBytes": 9130938,
+      "responseHeaderBytes": 7333
     },
     {
       "variant": "module_internal",
       "model": "full",
-      "encodedResponseBodyBytes": 12529286,
-      "responseHeaderBytes": 7346
+      "encodedResponseBodyBytes": 12530583,
+      "responseHeaderBytes": 7333
     }
   ],
   "limitations": "Measured Pages HTTP response bodies, not a physical iPhone/Android session. Browser compression, HTTP/SW cache, duplicate fetches, TLS overhead and SW update checks affect actual wire usage. Use bench download output and browser Network for physical-device totals."

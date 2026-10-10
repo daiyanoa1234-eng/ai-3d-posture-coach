@@ -12,7 +12,9 @@
 - TypeScript strict / ESLint / production build: 成功。
 - Vitest 29件 + Service Worker 2件: 成功。
 - ブラウザ: カメラ許可なしのfullモデル準備完了、合成デモの黄赤表示・文言、200ms、375px幅の横はみ出し0、コンソールerror/warnなし（オンライン）を確認。
-- Pages配信結果と転送量は公開後の記録を追記する。
+- Pages配信: GitHub Actions run [38065712093](https://github.com/daiyanoa1234-eng/ai-3d-posture-coach/actions/runs/38065712093)成功。公開画面の新注記とオフライン準備完了、コンソールerror/warnなしを確認。全16配信ファイルHTTP 200。SIMD lite 9,130,984 bytes、full 12,530,629 bytes（gzip応答本文）。端末セッションの実測ではない。
+- 公開URL: https://daiyanoa1234-eng.github.io/ai-3d-posture-coach/?bench=1
+- 以前の版を開いたままの場合、今回の移行では再読込が必要な場合がある。以降の新版は自動更新処理を利用する。
 
 ## 手動確認
 
@@ -31,3 +33,7 @@
 - scripts/report-assets.mjs、ASSET-SIZES.md、ASSET-SIZES.json
 - README.md、ACCEPTANCE.md、docs/implementation-v1.1.md（本報告）
 - PAGES-TRANSFER.md、PAGES-TRANSFER.json（公開後の応答サイズ再計測）
+
+- v1.1ローカル配信停止テスト: 初回準備後にpreviewサーバーを停止し、同URLを再読込。アプリ画面と3Dデモの動作、準備完了表示を確認。カメラ推論を含むiPhone NT-04は未確認。
+
+- PUBLICATION-AUDIT.json（公開前の履歴再監査）。監査では認証情報・私的個人情報・人物メディアの検出なし、コミット作者匿名を確認。

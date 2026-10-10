@@ -1,7 +1,7 @@
 {
   "date": "2026-10-11",
-  "reachableCommits": 3,
-  "historicalBlobs": 60,
+  "reachableCommits": 6,
+  "historicalBlobs": 85,
   "anonymousCommitIdentities": true,
   "findings": [],
   "manualReview": "Source and documentation reviewed: no participant identities, patient data, private contact details, captured images or videos. Public dependency attribution and the approved GitHub account remain. Pattern scanning is supplementary to manual review."

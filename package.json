@@ -1,0 +1,27 @@
+{
+  "name": "ai-3d-posture-coach",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "assets": "node scripts/prepare-assets.mjs",
+    "build": "npm run assets && tsc --noEmit && vite build && node scripts/prepare-sw.mjs",
+    "test": "vitest run",
+    "lint": "eslint src tests",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "1.1.0",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.180.0",
+    "eslint": "9.38.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.1",
+    "vite": "7.3.7",
+    "vitest": "5.0.3"
+  }
+}

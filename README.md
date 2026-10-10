@@ -4,7 +4,7 @@
 
 ## 利用する
 
-公開予定URL（未公開）: https://daiyanoa1234-eng.github.io/ai-3d-posture-coach/
+公開URL: https://daiyanoa1234-eng.github.io/ai-3d-posture-coach/
 
 1. 「カメラを起動」→説明に同意して開始します。カメラを使わない場合は「カメラなしでデモを見る」を選びます。デモの骨格・角度は合成値です。
 2. 体の横をカメラに向け、頭から足先まで映します。カメラは腰の高さ（90〜100cm）、水平に、距離2.5〜3.5m。逆光・複雑な背景を避けます。
@@ -67,11 +67,13 @@ Production版にはService Workerを生成します。画面は初回訪問時�
 
 **NF-05（アセット合計15MB以下）は非圧縮サイズで未達です。** 公式配布物 `tasks-vision@1.1.0` のWASM約13MB＋lite約5.78MBまたはfull約9.40MB＋JS/CSS約0.71MBが初回カメラ起動に必要です。WASMはSIMD／非SIMD／moduleの各配布物を配置しますが、実行環境が選択したものだけを読み込みます。両モデルの事前一括ダウンロードはしません。実転送量はホストの圧縮に依存するため別途確認が必要です。小容量が必須の場合はlite固定や別の推定ライブラリを再検証してください。
 
+ファイル別の容量と端末が選択するファイルの合計は [ASSET-SIZES.md](ASSET-SIZES.md) / `ASSET-SIZES.json` に記録。`npm run build && npm run report:assets`で更新できます。非圧縮合計と実際の通信転送量は別の値です。`?bench=1` のdownload項目でこの端末の観測値を確認できます。
+
 モデルのSHA-256をビルド時に固定値と照合します。モデルの取得元・サイズ・SHA-256は `public/models/manifest.json`、固定されたバージョンは `package-lock.json` を参照してください。ビルドスクリプトは既存モデルを再利用します。
 
 ## 公開
 
-公開リポジトリ作成は自動承認レビューにより未実施です。公開先 `daiyanoa1234-eng/ai-3d-posture-coach` とソース公開の承認後に作成・配信します。
+2026-10-11に公開先 `daiyanoa1234-eng/ai-3d-posture-coach`（public）とGitHub Pages配信の承認を取得。履歴の作者・コミッターは匿名化しています。公開前の確認結果は `PUBLICATION-AUDIT.json`。
 
 新規リポジトリのSettings → Pages → Sourceを **GitHub Actions** にします。`main`へのpushでLint → Vitest → build → Pagesが実行されます。カメラ・解析データはGit管理対象にしません。詳しい受け入れ記録は `ACCEPTANCE.md` を参照してください。
 
@@ -80,7 +82,8 @@ Production版にはService Workerを生成します。画面は初回訪問時�
 - Three.js: MIT（`three@0.180.0`）。
 - MediaPipe Tasks Vision: Apache-2.0（`@mediapipe/tasks-vision@1.1.0`）。
 - マネキン: 本プロジェクトでプリミティブから生成。外部の人体モデル・写真・テクスチャは使用していません。
-- Pose Landmarkerモデル: Google公式配布 `float16/1`。出典・SHA-256はmanifestに記録。
+- Pose Landmarker lite/fullモデル: **Apache-2.0**。公式配布 `float16/1`、公式ガイドが参照する[BlazePose GHUM 3Dモデルカード（2ページ目のLICENSED UNDER）](https://storage.googleapis.com/mediapipe-assets/Model%20Card%20BlazePose%20GHUM%203D.pdf)に基づく表記。出典・SHA-256はmanifestに記録。
+- ライセンス本文と帰属表示は `public/licenses/` に同梱。モデルカードは人物画像を含むためリポジトリへ保存せず、参照リンクのみ。
 - [Google Pose Landmarker Web guide](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker/web_js)
 - [Google PoseLandmarker API](https://developers.google.com/edge/api/mediapipe/js/tasks-vision.poselandmarker)
 - [Three.js Quaternion documentation](https://threejs.org/docs/pages/Quaternion.html)

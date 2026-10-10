@@ -5,6 +5,7 @@ export class PoseEstimator {
   private task: PoseLandmarker | null = null;
   delegate: "GPU" | "CPU" = "GPU";
   model: "lite" | "full" = appConfig.model;
+  wasmRuntime = { loader: "", binary: "" };
   private timestamp = -1;
   private generation = 0;
   async init(delegate: "GPU" | "CPU" = "GPU"): Promise<void> {
@@ -13,6 +14,10 @@ export class PoseEstimator {
     this.delegate = delegate;
     const base = import.meta.env.BASE_URL;
     const files = await FilesetResolver.forVisionTasks(`${base}mediapipe/wasm`);
+    this.wasmRuntime = {
+      loader: files.wasmLoaderPath ?? "",
+      binary: files.wasmBinaryPath ?? "",
+    };
     try {
       const task = await PoseLandmarker.createFromOptions(files, {
         baseOptions: {

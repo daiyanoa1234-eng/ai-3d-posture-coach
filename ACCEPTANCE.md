@@ -6,7 +6,7 @@
 
 - TypeScript strict: 成功。
 - ESLint: 成功。
-- Vitest: 25件（角度・信頼度・フィルタ・ヒステリシス・正面参考値・FK・膝ヒンジ・接地・凍結と中立復帰・MediaPipe初期化フォールバックと取消）。
+- Vitest: 26件（角度・信頼度・フィルタ・ヒステリシス・正面参考値・FK・膝ヒンジ・接地・凍結と中立復帰・MediaPipe初期化フォールバックと取消・通信容量集計）。
 - Production build: 成功。静的なWASM・両モデル・Service Workerを同梱。
 - npm audit: 0 vulnerabilities（依存更新後）。
 
@@ -48,4 +48,4 @@ Phase 0の実機速度ゲートとPhase 1の角度精度ゲートは未通過。
 
 ## 公開状態
 
-GitHub Pagesのための新規公開リポジトリ作成は、自動承認レビューで拒否され未実施。理由は公開ソースと公開先の明示的な承認不足。ローカルプレビューと配布ZIPを用意済み。
+2026-10-11に公開先 daiyanoa1234-eng/ai-3d-posture-coach（public）とPages配信をユーザー承認済み。公開前に全到達可能コミットを確認し作者情報を匿名化、認証情報・私的な個人情報・人物画像/動画なし。監査結果はPUBLICATION-AUDIT.json、容量はASSET-SIZES.md。

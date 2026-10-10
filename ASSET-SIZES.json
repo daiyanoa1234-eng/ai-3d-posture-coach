@@ -1,0 +1,205 @@
+{
+  "unit": "bytes; MB = 1,000,000 bytes",
+  "files": [
+    {
+      "file": "assets/index-C8K5n1jO.js",
+      "bytes": 694824,
+      "gzipReferenceBytes": 186405
+    },
+    {
+      "file": "assets/index-DqOJSIuA.css",
+      "bytes": 10245,
+      "gzipReferenceBytes": 3181
+    },
+    {
+      "file": "index.html",
+      "bytes": 972,
+      "gzipReferenceBytes": 568
+    },
+    {
+      "file": "licenses/Apache-2.0.txt",
+      "bytes": 9141,
+      "gzipReferenceBytes": 3325
+    },
+    {
+      "file": "licenses/NOTICE.txt",
+      "bytes": 768,
+      "gzipReferenceBytes": 463
+    },
+    {
+      "file": "licenses/three-MIT.txt",
+      "bytes": 1081,
+      "gzipReferenceBytes": 662
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_internal.js",
+      "bytes": 335393,
+      "gzipReferenceBytes": 81443
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_internal.wasm",
+      "bytes": 12997248,
+      "gzipReferenceBytes": 3844009
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_module_internal.js",
+      "bytes": 335431,
+      "gzipReferenceBytes": 81382
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_module_internal.wasm",
+      "bytes": 12997272,
+      "gzipReferenceBytes": 3844012
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_nosimd_internal.js",
+      "bytes": 335196,
+      "gzipReferenceBytes": 81381
+    },
+    {
+      "file": "mediapipe/wasm/vision_wasm_nosimd_internal.wasm",
+      "bytes": 12168316,
+      "gzipReferenceBytes": 3729309
+    },
+    {
+      "file": "models/manifest.json",
+      "bytes": 358,
+      "gzipReferenceBytes": 220
+    },
+    {
+      "file": "models/pose_landmarker_full.task",
+      "bytes": 9398198,
+      "gzipReferenceBytes": 8355592
+    },
+    {
+      "file": "models/pose_landmarker_lite.task",
+      "bytes": 5777746,
+      "gzipReferenceBytes": 4956106
+    },
+    {
+      "file": "sw.js",
+      "bytes": 954,
+      "gzipReferenceBytes": 519
+    }
+  ],
+  "totalHostedBytes": 55063143,
+  "shellBytes": 717985,
+  "coldStartPresets": [
+    {
+      "variant": "internal",
+      "model": "lite",
+      "bytes": 19828372,
+      "gzipReferenceBytes": 9076681,
+      "files": [
+        "assets/index-C8K5n1jO.js",
+        "assets/index-DqOJSIuA.css",
+        "index.html",
+        "licenses/Apache-2.0.txt",
+        "licenses/NOTICE.txt",
+        "licenses/three-MIT.txt",
+        "sw.js",
+        "mediapipe/wasm/vision_wasm_internal.js",
+        "mediapipe/wasm/vision_wasm_internal.wasm",
+        "models/pose_landmarker_lite.task"
+      ]
+    },
+    {
+      "variant": "internal",
+      "model": "full",
+      "bytes": 23448824,
+      "gzipReferenceBytes": 12476167,
+      "files": [
+        "assets/index-C8K5n1jO.js",
+        "assets/index-DqOJSIuA.css",
+        "index.html",
+        "licenses/Apache-2.0.txt",
+        "licenses/NOTICE.txt",
+        "licenses/three-MIT.txt",
+        "sw.js",
+        "mediapipe/wasm/vision_wasm_internal.js",
+        "mediapipe/wasm/vision_wasm_internal.wasm",
+        "models/pose_landmarker_full.task"
+      ]
+    },
+    {
+      "variant": "nosimd_internal",
+      "model": "lite",
+      "bytes": 18999243,
+      "gzipReferenceBytes": 8961919,
+      "files": [
+        "assets/index-C8K5n1jO.js",
+        "assets/index-DqOJSIuA.css",
+        "index.html",
+        "licenses/Apache-2.0.txt",
+        "licenses/NOTICE.txt",
+        "licenses/three-MIT.txt",
+        "sw.js",
+        "mediapipe/wasm/vision_wasm_nosimd_internal.js",
+        "mediapipe/wasm/vision_wasm_nosimd_internal.wasm",
+        "models/pose_landmarker_lite.task"
+      ]
+    },
+    {
+      "variant": "nosimd_internal",
+      "model": "full",
+      "bytes": 22619695,
+      "gzipReferenceBytes": 12361405,
+      "files": [
+        "assets/index-C8K5n1jO.js",
+        "assets/index-DqOJSIuA.css",
+        "index.html",
+        "licenses/Apache-2.0.txt",
+        "licenses/NOTICE.txt",
+        "licenses/three-MIT.txt",
+        "sw.js",
+        "mediapipe/wasm/vision_wasm_nosimd_internal.js",
+        "mediapipe/wasm/vision_wasm_nosimd_internal.wasm",
+        "models/pose_landmarker_full.task"
+      ]
+    },
+    {
+      "variant": "module_internal",
+      "model": "lite",
+      "bytes": 19828434,
+      "gzipReferenceBytes": 9076623,
+      "files": [
+        "assets/index-C8K5n1jO.js",
+        "assets/index-DqOJSIuA.css",
+        "index.html",
+        "licenses/Apache-2.0.txt",
+        "licenses/NOTICE.txt",
+        "licenses/three-MIT.txt",
+        "sw.js",
+        "mediapipe/wasm/vision_wasm_module_internal.js",
+        "mediapipe/wasm/vision_wasm_module_internal.wasm",
+        "models/pose_landmarker_lite.task"
+      ]
+    },
+    {
+      "variant": "module_internal",
+      "model": "full",
+      "bytes": 23448886,
+      "gzipReferenceBytes": 12476109,
+      "files": [
+        "assets/index-C8K5n1jO.js",
+        "assets/index-DqOJSIuA.css",
+        "index.html",
+        "licenses/Apache-2.0.txt",
+        "licenses/NOTICE.txt",
+        "licenses/three-MIT.txt",
+        "sw.js",
+        "mediapipe/wasm/vision_wasm_module_internal.js",
+        "mediapipe/wasm/vision_wasm_module_internal.wasm",
+        "models/pose_landmarker_full.task"
+      ]
+    }
+  ],
+  "notes": [
+    "Only one runtime variant and one model are selected by FilesetResolver and device settings.",
+    "Full hosted size is not the per-device download total.",
+    "gzipReferenceBytes is local gzip of each file; it is not observed GitHub Pages transfer size.",
+    "First visits include the HTML/JS/CSS and Service Worker shell precache; HTTP cache reuse can avoid duplicate body transfers.",
+    "The models manifest is hosted but not downloaded by the application.",
+    "Warm-start wire transfer can be zero for cached app/model/runtime; Service Worker update checks may still contact the origin."
+  ]
+}

@@ -1,3 +1,4 @@
+import { currentDownloadReport } from "../analysis/downloads";
 import { Camera, cameraError } from "../camera/Camera";
 import { PoseEstimator } from "../pose/PoseEstimator";
 import { LandmarkFilter } from "../filter/OneEuroFilter";
@@ -30,6 +31,8 @@ interface Benchmark {
   userAgent: string;
   durationSeconds: number;
   qualityAdjusted: boolean;
+  wasmRuntime: { loader: string; binary: string };
+  download: ReturnType<typeof currentDownloadReport>;
 }
 export class App {
   private camera = new Camera(element<HTMLVideoElement>("video"));
@@ -717,6 +720,8 @@ export class App {
       userAgent: navigator.userAgent,
       durationSeconds: +seconds.toFixed(1),
       qualityAdjusted: this.adjusted,
+      wasmRuntime: this.pose.wasmRuntime,
+      download: currentDownloadReport(),
     };
     const passed = this.result.inferenceFps >= (isMobile ? 15 : 25);
     setText(
